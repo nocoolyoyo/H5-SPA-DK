@@ -4,7 +4,6 @@
 * */
 //环境依赖
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 
 
