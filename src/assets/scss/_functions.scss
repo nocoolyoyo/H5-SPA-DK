@@ -1,0 +1,148 @@
+/*
+*
+*  created by nocoolyoyo on 2017/06/20
+*
+*/
+
+//-----------------------
+//间距
+//-----------------------
+//
+//  根据dpr和间距号输出间距数值
+//  @params($dpr,$space)
+//  $dpr：需要输出的dpr
+//  $value：需要输出的间距号，1，2，3，4，5，6
+//
+@function Space($value,$dpr:false) {
+  $group:map-get($Spaces,$value);
+  @if $dpr{
+    @for $i from 1 through length($group) {
+      @if($i == $dpr){
+        $item: nth($group, $i);
+        @return $item;
+      }
+    }
+  }@else{
+    @return $group;
+  }
+}
+//-----------------------
+//字体-大小
+//-----------------------
+//
+//  根据dpr和字体号输出具体字体大小
+//  @params($dpr,$space)
+//  $dpr：需要输出的dpr
+//  $value：需要输出的字号:h1,h2
+//
+@function Font($value,$dpr:false) {
+  //如果$dpr不传，则传出一整dpr组的数据
+  $group:map-get($Fonts,$value);
+  @if $dpr{
+    @for $i from 1 through length($group) {
+      @if($i == $dpr){
+        $item: nth($group, $i);
+        @return $item;
+      }
+    }
+  }@else{
+    @return $group;
+  }
+}
+//-----------------------
+//字体-行高
+//-----------------------
+//
+//  根据dpr和字体号输出行高
+//  @params($dpr,$space)
+//  $dpr：需要输出的dpr
+//  $value：需要输出的行高:h1,h2
+//
+@function LineHeight($value,$dpr:false) {
+  //如果$dpr不传，则传出一整dpr组的数据
+  $group:map-get($LineHeights,$value);
+  @if $dpr{
+    @for $i from 1 through length($group) {
+      @if($i == $dpr){
+        $item: nth($group, $i);
+        @return $item;
+      }
+    }
+  }@else{
+    @return $group;
+  }
+}
+
+//-----------------------
+//数组四则计算
+//-----------------------
+//
+//  plus:加法; minus:减法
+//
+@function groupCalc($value, $cvalue, $calFunc: minus) {
+  //如果$dpr不传，则传出一整dpr组的数据
+  @debug $value;
+  @debug $cvalue;
+  $newValue: ();
+  @if $calFunc==plus{
+    @each $item in $value {
+      $newValue: join($newValue,$item + $cvalue,comma);
+    }
+  }@else if $calFunc==minus{
+    @each $item in $value {
+      $newValue: join($newValue,$item - $cvalue,comma);
+    }
+  }@else if $calFunc==multi{
+    @each $item in $value {
+      $newValue: join($newValue,$item * $cvalue,comma);
+    }
+  }@else if $calFunc==division{
+    @each $item in $value {
+      $newValue: join($newValue,$item / $cvalue,comma);
+    }
+  }
+  //@debug $newValue;
+  @return $newValue;
+}
+//-----------------------
+//组合四则计算
+//-----------------------
+//
+//  plus:加法; minus:减法
+//
+@function arrayCalc($value, $cvalue, $calFunc: minus) {
+  //如果$dpr不传，则传出一整dpr组的数据
+  @debug $value;
+  @debug $cvalue;
+  $arrayCalcIndex:1;
+  $newValue: ();
+  @for $i from 1 through length($value) {
+    $minustart: nth($value, $i);
+    $minuend:  nth($cvalue, $i);
+    @if $calFunc==plus{
+      $newValue: join($newValue,$minustart + $minuend,comma);
+    }@else if $calFunc==minus{
+      $newValue: join($newValue,$minustart - $minuend,comma);
+    }
+  }
+  //@debug $newValue;
+  @return $newValue;
+}
+//-----------------------
+//数组数值取反
+//-----------------------
+//
+//  根据dpr和字体号输出行高
+//  @params($dpr,$space)
+//  $dpr：需要输出的dpr
+//  plus:加法; minus:减法
+//
+@function groupReves($value) {
+  //如果$dpr不传，则传出一整dpr组的数据
+
+  $newValue: ();
+  @each $item in $value {
+    $newValue: join($newValue,- $item,comma);
+  }
+  @return $newValue;
+}

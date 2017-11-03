@@ -1,0 +1,65 @@
+//-----------------------
+//  变量
+//-----------------------
+
+//适配变量
+//-----------------------
+$dprs: (1 2 3);  // 1,2,3dpr
+
+
+//字体
+//-----------------------
+
+
+$baseFontFamily: "黑体";
+
+//字体-大小-----------------------
+$fs-h1: (32px 64px 96px);
+$fs-h2: (30px 60px 90px);
+$fs-h3: (28px 56px 84px);
+$fs-h4: (24px 48px 72px);
+$fs-h5: (20px 40px 60px);
+$fs-h6: (18px 36px 54px);
+$fs-p1: (16px 32px 48px);
+$fs-p2: (14px 28px 42px);
+$fs-p3: (12px 24px 36px);
+
+//字体-行高-----------------------
+$lh-h1: (54px 108px 162px);
+$lh-h2: (48px 96px 144px);
+$lh-p1: (26px 52px 78px);
+$lh-p2: (20px 40px 60px);
+
+
+//色板-----------------------
+$c-smt-night: #1b1c1d;  //semantic
+$c-smt-border: rgba(34,36,38,.15);  //semantic
+
+$c-dreamlight: #95a2ff;
+$c-aoyi:  #51a3ff;
+$c-milka:  #f5f7f9;
+$c-silkgray:  rgb(250, 253, 255);
+$c-huiyuan:  #d7dde4;
+$c-nightlight: #3c3c3c;
+$c-blood:  #de432e;
+$c-lemon:  #de8b3d;
+$c-darklemon:  rgb(170, 130, 50);
+$c-tree: #07ab00;
+$c-darkTree:  rgb(60, 142, 40);
+$c-grayEyes:  rgb(137, 122, 98);
+$c-themeGray:  #e9eaec;
+
+
+//间距,尺寸-----------------------
+$s-ss: 0.2rem;
+$s-xs: 0.4rem;
+$s-ms: 0.6rem;
+$s-md: 0.8rem;
+$s-lg: 1rem;
+$s-xg: 1.2rem;
+$s-sg: 0.5rem;
+
+
+
+
+

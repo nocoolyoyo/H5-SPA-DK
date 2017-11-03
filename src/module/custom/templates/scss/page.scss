@@ -1,0 +1,78 @@
+
+
+
+$page-header-logo-size: (240px,480px, 720px);
+$page-header-text-color: white;
+
+$page-bg-sizeRate: 1000/750;
+$page-contentHead-sizeRate: 750/633;
+$page-contentFoot-sizeRate: 750/370;
+#page {
+  overflow-x: hidden;
+  background-repeat: no-repeat;
+  background-position:top;
+  background-size: contain;
+  width: 100vw;
+  min-height: 100vh;
+
+  header {
+    padding: 6vw;
+
+    .logo{
+      display: block;
+      margin: 0 auto;
+      @include dpr-output(
+                              (width,$page-header-logo-size)
+      );
+      height: auto;
+    }
+    .title {
+      color: $page-header-text-color;
+      @include dpr-output(
+              (font-size,$fs-h2),
+              (line-height,$lh-h2)
+      );
+      text-align: center;
+    }
+    .welcome {
+      color: $page-header-text-color;
+      @include dpr-output(
+                              (font-size,$fs-p1),
+                              (line-height,$lh-p1)
+      );
+      text-align: center;
+    }
+  }
+  main {
+    .content-head {
+      overflow-x: hidden;
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 100vw;
+      height:calc(100vw/ #{$page-contentHead-sizeRate});
+
+      .download {
+        width: 5rem;
+        display: block;
+        text-align: center;
+        @include dpr-output(
+          (font-size,$fs-h6)
+        );
+        color: yellow;
+        margin: 2.3rem auto 0;
+      }
+    }
+
+    .content-body {
+
+    }
+    .content-foot {
+      overflow-x: hidden;
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 100vw;
+      height:calc(100vw/ #{$page-contentFoot-sizeRate});
+    }
+  }
+
+}
