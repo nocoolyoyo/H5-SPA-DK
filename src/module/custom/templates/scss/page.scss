@@ -1,40 +1,83 @@
+//字体
+//-----------------------
+@font-face {
+  font-family: 'HacenTunisiaRegular';
+  src: url('../../../../assets/fonts/HacenTunisiaRegular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'HacenTunisiaBdRegular';
+  src: url('../../../../assets/fonts/HacenTunisiaBdRegular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+//@font-face {
+//  font-family: 'HacenTunisiaLtRegular';
+//  src: url('../../../../assets/fonts/HacenTunisiaRegular.ttf') format('truetype');
+//  font-weight: normal;
+//  font-style: normal;
+//}
 
 
+@font-face {
+  font-family: 'chaparralpro-boldit';
+  src: url('../../../../assets/fonts/chaparralpro-boldit.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'HelveticaNeueW23forSKY-Reg';
+  src: url('../../../../assets/fonts/HelveticaNeueW23forSKY-Reg.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'HelveticaNeueW23forSKY-Bd';
+  src: url('../../../../assets/fonts/HelveticaNeueW23forSKY-Bd.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
-$page-header-logo-size: (240px,480px, 720px);
+
 $page-header-text-color: white;
+$page-article-text-color: #3e3136;
 
 $page-bg-sizeRate: 1000/750;
 $page-contentHead-sizeRate: 750/633;
 $page-contentFoot-sizeRate: 750/370;
 #page {
+  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
   overflow-x: hidden;
   background-repeat: no-repeat;
   background-position:top;
   background-size: contain;
   width: 100vw;
   min-height: 100vh;
+  position: relative;
+  a {
+    color: #d13d3d
+  }
 
   header {
     padding: 6vw;
-
     .logo{
       display: block;
       margin: 0 auto;
-      @include dpr-output(
-                              (width,$page-header-logo-size)
-      );
+      width: 60vw;
       height: auto;
     }
     .title {
+      font-family: 'HacenTunisiaBdRegular';
       color: $page-header-text-color;
       @include dpr-output(
-              (font-size,$fs-h2),
-              (line-height,$lh-h2)
+              (font-size,$fs-h3),
+              (line-height,$lh-h3)
       );
       text-align: center;
     }
     .welcome {
+      font-family: 'HelveticaNeueW23forSKY-Bd';
       color: $page-header-text-color;
       @include dpr-output(
                               (font-size,$fs-p1),
@@ -44,7 +87,10 @@ $page-contentFoot-sizeRate: 750/370;
     }
   }
   main {
+    font-family: 'HacenTunisiaRegular';
+    color: $page-article-text-color;
     .content-head {
+
       overflow-x: hidden;
       background-repeat: no-repeat;
       background-size: contain;
@@ -52,19 +98,100 @@ $page-contentFoot-sizeRate: 750/370;
       height:calc(100vw/ #{$page-contentHead-sizeRate});
 
       .download {
-        width: 5rem;
+        font-family: 'chaparralpro-boldit';
+        text-shadow:5px 2px 6px #000;
+        position: absolute;
+        width: 50vw;
+        left: 50%;
+        margin-top: 24vw;
+        margin-left: -24vw;
         display: block;
         text-align: center;
-        @include dpr-output(
-          (font-size,$fs-h6)
-        );
+        font-size: 4vw;
         color: yellow;
-        margin: 2.3rem auto 0;
+        &:active {
+          opacity: 0.8;
+        }
+      }
+      .more {
+        font-family: 'HelveticaNeueW23forSKY-Bd';
+        color: $page-article-text-color;
+        margin-top: 39vw;
+        margin-right: 12vw;
+        float: right;
+        text-align: right;
+        @include dpr-output(
+                                (font-size,$fs-p1)
+        );
+        &:active {
+          opacity: 0.8;
+        }
+        &:visited {
+          outline: none;
+        }
+      }
+      .title {
+        font-family: 'HacenTunisiaRegular';
+        position: absolute;
+        width: 80vw;
+        left: 50%;
+        margin-top: 48vw;
+        margin-left: -40vw;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @include dpr-output(
+                                (font-size,$fs-h3),
+                                (line-height,$lh-h3)
+        );
+        img {
+          width: 12vw;
+          height: auto;
+        }
+        &>img:first-child {
+          margin-right: 3vw;
+        }
+        &>img:last-child {
+          margin-left: 3vw;
+        }
       }
     }
 
     .content-body {
+      margin: -2px 0;
+      background-repeat: repeat-y;
+      background-size: contain;
+      width: 100vw;
+      height: auto;
+      article {
+        @include dpr-output(
+                                (font-size,$fs-p2),
+                                (line-height,$lh-p2)
+        );
+        p {
+          @include dpr-output(
+                                  (font-size,$fs-p2),
+                                  (line-height,$lh-p2)
+          );
+        }
+        font-family: 'HelveticaNeueW23forSKY-Reg';
+        margin-top: -25vw;
+        padding: 0 12vw;
+        word-break: break-all;
+        .cover {
+          display: block;
+          width: 100%;
+          height: auto;
+          box-sizing: border-box;
+          margin: 2vw 0;
+          border: 1px solid  $page-article-text-color
+        }
+        width: 100vw;
+        height: auto;
 
+
+      }
     }
     .content-foot {
       overflow-x: hidden;
@@ -72,7 +199,40 @@ $page-contentFoot-sizeRate: 750/370;
       background-size: contain;
       width: 100vw;
       height:calc(100vw/ #{$page-contentFoot-sizeRate});
+      .copyright {
+        color: #6e492d;
+        background-color: #9c7f69;
+        margin: 11vw 12vw 0;
+        min-height: 9vw;
+        text-align: center;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        font-size: 2.6vw;
+      }
+    }
+  }
+}
+
+
+
+//颜色主题设置
+#page {
+  &.white-blue {
+    header {
+      .title {
+        color: $page-header-text-color;
+      }
+      .welcome {
+        color: $page-header-text-color;
+
+      }
     }
   }
 
 }
+
+
+

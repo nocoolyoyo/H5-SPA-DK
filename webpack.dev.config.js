@@ -5,6 +5,7 @@
 //环境依赖
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const autoprefixer = require('autoprefixer');
+const px2rem = require('postcss-px2rem');
 
 
 //页面配置
@@ -13,9 +14,6 @@ const Pages = require("./pageConfig");
 
 const page = Pages[0]; //默认页面
 //gulp 输出文件的目录
-
-
-
 
 
 
@@ -65,7 +63,7 @@ module.exports = {
             },
             //其他文件模块化
             {
-                test: /\.(eot|ttf|woff|woff2)$/,
+                test: /\.(eot|ttf|woff|woff2|otf)$/i,
                 loader: 'file-loader',
             },
             //sass模块
@@ -88,7 +86,8 @@ module.exports = {
                         loader: 'postcss-loader',
                         options: {
                             plugins: (loader) => [
-                                autoprefixer()
+                                autoprefixer(),
+                                px2rem({remUnit: 75})
                             ]
                         }
                     }
@@ -96,7 +95,7 @@ module.exports = {
             },
             //图片文件模块化
             {
-                test: /\.(png|jpg|gif|svg|ico)$/,
+                test: /\.(png|jpg|gif|svg|ico)$/i,
                 loader: 'file-loader',
                 options: {
                     name: '[name].[ext]?[hash]'

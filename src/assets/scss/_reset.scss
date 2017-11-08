@@ -44,3 +44,8 @@ button {
     outline: none;
   }
 }
+
+//文字平滑
+html {
+  -webkit-font-smoothing:antialiased
+}

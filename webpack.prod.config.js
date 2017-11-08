@@ -1,42 +1,44 @@
 /*
- * webpack生产环境配置
- *
- * */
-
+* webpack生产环境配置
+*
+* */
+//环境依赖
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 
 
+//页面配置
+
+const page = require("./pageConfig");
+
+
 //gulp 输出文件的目录
-// let _gulpFilePath = (dirname)=> {
-//     let path = "./src/gulp/";
-//     if(typeof dirname === 'undefined')
-//         return path;
-//     return path + dirname;
-// };
 
-module.exports = {
-    devtool: '#eval-source-map',
-    entry: {
-        main: __dirname + "/src/main.js",
-        //常用的第三方库封装
-        vendor: ['jquery',
-                      './src/module/vendor/semanticUI/semantic.min.css',
-                      './src/module/vendor/semanticUI/semantic.min.js']
 
-    },
-    output: {
-        path: __dirname + "/dist",
+
+//构造webpack entry
+function makeEntry() {
+    console.log(page.entry)
+    var entry = {};
+    entry.vendor = ['./src/module/custom/flexible.js'];
+    entry['main'] = page.entry;
+console.log(entry)
+    return entry;
+}
+
+//输出webpack output
+function makeOutput() {
+    var output = {
+        path: __dirname + '/dist/'+page.title,
         chunkFilename:'[name].js',
         filename: '[name].js',
-    },
-    resolve: {
-        extensions: ['.js', '.jsx'],
-        alias: {
-            'vue$': 'vue/dist/vue.esm.js',
-        }
-    },
+    };
+    return output;
+}
+module.exports = {
+    devtool: '#eval-source-map',
+    entry: makeEntry(),
+    output: makeOutput(),
     resolveLoader: {
         alias: {
             'scss-loader': 'sass-loader',
@@ -44,7 +46,9 @@ module.exports = {
     },
 
     devServer: {
-        contentBase: "./dist",//本地服务器所加载的页面所在的目录
+        // host: '192.168.21.66',
+        // port: 8090,
+        contentBase: "./dist" + page.title,//本地服务器所加载的页面所在的目录
         historyApiFallback: true,//不跳转
         inline: true//实时刷新
     },
@@ -55,24 +59,15 @@ module.exports = {
             {
                 test: /\.(jsx|js)$/,
                 loader: "babel-loader",
-                exclude: /node_modules/
-            },
-            //vue相关loaders
-            {
-                test:/\.vue$/,
-                use: [
-                    //vue转义为ES6
-                    {
-                        loader: 'vue-loader'
-                    },
-
-                ]
-                //    exclude: /node_modules/
+                exclude: /(node_modules|webuploader)/
             },
             //其他文件模块化
             {
-                test: /\.(eot|ttf|woff|woff2)$/,
+                test: /\.(eot|ttf|woff|woff2|otf)$/i,
                 loader: 'file-loader',
+                options: {
+                    name: '[name].[ext]?[hash]'
+                }
             },
             //sass模块
             {
@@ -102,28 +97,22 @@ module.exports = {
             },
             //图片文件模块化
             {
-                test: /\.(png|jpg|gif|svg|ico)$/,
+                test: /\.(png|jpg|gif|svg|ico)$/i,
                 loader: 'file-loader',
                 options: {
                     name: '[name].[ext]?[hash]'
                 }
-            },
+            }
         ]
     },
     plugins:[
         new HtmlWebpackPlugin({
-            template: './src/index.html' // 模板路径
+            template: './index.html' // 模板路径
         }),
-        //打包时候移除警告
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            }
-        })
         // new webpack.optimize.CommonsChunkPlugin({
         //     names: ['vendor', 'manifest']//manifest:抽取变动部分，防止第三方控件的多次打包
         // }),
         //webpack忽略打包
-        // new webpack.IgnorePlugin(/\.\/vendor.js$/)
+        //new webpack.IgnorePlugin(/\.\/vendor.js$/)
     ]
 };

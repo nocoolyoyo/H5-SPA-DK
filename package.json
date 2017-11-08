@@ -6,6 +6,7 @@
   "dependencies": {
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
+    "postcss-px2rem": "^0.3.0",
     "vue": "^2.4.4"
   },
   "devDependencies": {
@@ -36,7 +37,12 @@
   "scripts": {
     "start": "webpack-dev-server --open --config ./webpack.dev.config.js",
     "dev": "webpack --progress --colors --config ./webpack.dev.config.js",
-    "build": " webpack --progress --colors --config ./webpack.prod.config.js"
+    "webpackProd": "webpack --config ./webpack.prod.config.js",
+    "分享领奖": "node 分享领奖 && npm run webpackProd",
+    "城堡升级": "node 城堡升级 && npm run webpackProd",
+    "神器升级": "node 神器升级 && npm run webpackProd",
+    "领主升级": "node 领主升级 && npm run webpackProd",
+    "build": "npm run 分享领奖 && npm run 城堡升级 && npm run 神器升级 && npm run 领主升级"
   },
   "author": "nocoolyoyo",
   "license": "ISC"

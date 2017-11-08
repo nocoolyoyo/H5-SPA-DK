@@ -7,15 +7,30 @@
 $dprs: (1 2 3);  // 1,2,3dpr
 
 
-//字体
-//-----------------------
 
 
-$baseFontFamily: "黑体";
+
+
+
+//@font-face {
+//  font-family: 'Aparajita';
+//  src: url('../font/APARAJB.TTF') format('truetype');
+//}
+//
+//@font-face {
+//  font-family: 'MyriadPro';
+//  src: url('../font/CHAPARRALPRO-BOLDIT.OTF') format('truetype');
+//}
+//
+//@font-face {
+//  font-family: 'ChaparralPro';
+//  src: url('../font/CHAPARRALPRO-ITALIC.OTF') format('truetype');
+//}
 
 //字体-大小-----------------------
-$fs-h1: (32px 64px 96px);
-$fs-h2: (30px 60px 90px);
+
+$fs-h1: (36px 72px 108px);
+$fs-h2: (32px 64px 96px);
 $fs-h3: (28px 56px 84px);
 $fs-h4: (24px 48px 72px);
 $fs-h5: (20px 40px 60px);
@@ -26,6 +41,8 @@ $fs-p3: (12px 24px 36px);
 
 //字体-行高-----------------------
 $lh-h1: (54px 108px 162px);
+$lh-h2: (48px 96px 144px);
+$lh-h3: (40px 80px 120px);
 $lh-h2: (48px 96px 144px);
 $lh-p1: (26px 52px 78px);
 $lh-p2: (20px 40px 60px);

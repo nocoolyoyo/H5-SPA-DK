@@ -6,3 +6,4 @@ module.exports = {
         'autoprefixer': {browsers: 'last 5 version'}
     }
 };
+
